@@ -1,0 +1,19 @@
+{
+  "title": "User Control Panel (UCP) Registration",
+  "description": "Welcome to **{BOT_NAME}**!\nBefore joining the server, all players must register a UCP account. This links your Discord profile to your in-game identity and server stats.",
+  "fields": [
+    {
+      "name": "📌 How to Register",
+      "value": "1. Click the **Register UCP** button below.\n2. Complete the required account credentials in the prompt.\n3. Wait for database verification.\n4. Your account will automatically link and assign player permissions."
+    },
+    {
+      "name": "⚠️ Rules & Guidelines",
+      "value": "• One UCP account per person. Multi-accounting is strictly prohibited.\n• Use a valid name format according to server roleplay guidelines.\n• Never share your account credentials with anyone, including staff."
+    }
+  ],
+  "button": {
+    "label": "Register UCP",
+    "emoji": "📝"
+  },
+  "footer": "SA-MP Link Gateway • Powered by {BOT_NAME}"
+}

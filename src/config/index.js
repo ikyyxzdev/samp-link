@@ -7,6 +7,11 @@ module.exports = {
     server: {
         ip: process.env.SERVER_IP || '127.0.0.1:7777',
     },
+    roles: {
+        founder: process.env.FOUNDER_ROLE || '',
+        admin: process.env.ADMIN_ROLE || '',
+        ucp: process.env.UCP_ROLE || '',
+    },
     colors: {
         primary: 0x3498db,
         success: 0x2ecc71,
