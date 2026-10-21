@@ -1,0 +1,26 @@
+{
+  "name": "samp-link",
+  "version": "1.0.0",
+  "description": "An open-source Discord bot for SA-MP and open.mp servers, featuring UCP integration, player statistics, account linking, and customizable commands. Built with Node.js.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikyyxzdev/samp-link.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ikyyxzdev/samp-link/issues"
+  },
+  "homepage": "https://github.com/ikyyxzdev/samp-link#readme",
+  "dependencies": {
+    "discord.js": "^14.27.0",
+    "dotenv": "^18.0.8",
+    "mysql2": "^3.24.6"
+  }
+}
