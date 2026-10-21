@@ -1,0 +1,6 @@
+{
+  "title": "🔐 UCP Account Verification",
+  "description": "Hello **{USER_TAG}**!\n\nYour registration request for UCP account **{UCP_NAME}** on **{BOT_NAME}** has been received. Please use the 6-digit verification code below to verify your identity.",
+  "code_field_title": "Verification Code",
+  "footer": "Keep this code private. Do not share it with anyone! • {BOT_NAME}"
+}

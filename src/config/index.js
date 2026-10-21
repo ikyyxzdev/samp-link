@@ -12,6 +12,15 @@ module.exports = {
         admin: process.env.ADMIN_ROLE || '',
         ucp: process.env.UCP_ROLE || '',
     },
+    ucp: {
+        namePrefix: process.env.NAME_AFTER_REGISTER || 'Verifed',
+    },
+    database: {
+        tableUcp: process.env.TABLE_UCP || 'players',
+        colId: process.env.COLUMN_ID || 'id',
+        colNameUcp: process.env.COLUMN_NAME_UCP || 'ucp_name',
+        colVerifyCode: process.env.COLUMN_VERIFY_CODE || 'verify_code',
+    },
     colors: {
         primary: 0x3498db,
         success: 0x2ecc71,
