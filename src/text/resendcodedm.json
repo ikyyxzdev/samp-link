@@ -1,0 +1,6 @@
+{
+  "title": "📩 Resent Verification Code",
+  "description": "Hello **{USER_TAG}**!\nHere is your requested verification code for UCP account **{UCP_NAME}** on **{BOT_NAME}**.",
+  "code_field_title": "New Verification Code",
+  "footer": "SA-MP Link Gateway • {BOT_NAME}"
+}

@@ -20,6 +20,9 @@ module.exports = {
         colId: process.env.COLUMN_ID || 'id',
         colNameUcp: process.env.COLUMN_NAME_UCP || 'ucp_name',
         colVerifyCode: process.env.COLUMN_VERIFY_CODE || 'verify_code',
+        colDiscordId: process.env.COLUMN_DISCORD_ID || 'discord_id',
+        colPassword: process.env.COLUMN_PASSWORD || 'password',
+        colSalt: process.env.COLUMN_SALT || '',
     },
     colors: {
         primary: 0x3498db,

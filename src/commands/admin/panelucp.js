@@ -21,7 +21,6 @@ module.exports = {
      * @param {import('discord.js').ChatInputCommandInteraction} interaction 
      */
     async execute(interaction) {
-        // Strict Authorization: Check if user has Founder Role or is Server Owner
         const isOwner = interaction.guild?.ownerId === interaction.user.id;
         const hasFounderRole = config.roles.founder && interaction.member.roles.cache.has(config.roles.founder);
 
@@ -32,7 +31,6 @@ module.exports = {
             });
         }
 
-        // Load content template from JSON
         const jsonPath = path.join(__dirname, '..', '..', 'text', 'registerucp.json');
 
         if (!fs.existsSync(jsonPath)) {
@@ -44,8 +42,7 @@ module.exports = {
 
         let panelData;
         try {
-            const rawContent = fs.readFileSync(jsonPath, 'utf-8');
-            panelData = JSON.parse(rawContent);
+            panelData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
         } catch (error) {
             console.error('[ERROR] Failed to parse registerucp.json:', error);
             return interaction.reply({
@@ -54,11 +51,9 @@ module.exports = {
             });
         }
 
-        // Interpolate placeholder variables
         const parsedDescription = panelData.description.replace(/{BOT_NAME}/g, config.bot.name);
         const parsedFooter = panelData.footer.replace(/{BOT_NAME}/g, config.bot.name);
 
-        // Build Embed
         const embed = new EmbedBuilder()
             .setTitle(panelData.title)
             .setDescription(parsedDescription)
@@ -66,13 +61,8 @@ module.exports = {
             .setFooter({ text: parsedFooter, iconURL: config.bot.logo || undefined })
             .setTimestamp();
 
-        if (config.bot.logo) {
-            embed.setThumbnail(config.bot.logo);
-        }
-
-        if (config.bot.banner) {
-            embed.setImage(config.bot.banner);
-        }
+        if (config.bot.logo) embed.setThumbnail(config.bot.logo);
+        if (config.bot.banner) embed.setImage(config.bot.banner);
 
         if (Array.isArray(panelData.fields)) {
             for (const field of panelData.fields) {
@@ -80,16 +70,38 @@ module.exports = {
             }
         }
 
-        // Build Action Button
-        const registerButton = new ButtonBuilder()
+        // Action Buttons
+        const registerBtn = new ButtonBuilder()
             .setCustomId('btn_ucp_register_init')
             .setLabel(panelData.button?.label || 'Register UCP')
             .setEmoji(panelData.button?.emoji || '📝')
             .setStyle(ButtonStyle.Success);
 
-        const row = new ActionRowBuilder().addComponents(registerButton);
+        const resendCodeBtn = new ButtonBuilder()
+            .setCustomId('btn_ucp_resend_code')
+            .setLabel('Resend Code')
+            .setEmoji('📩')
+            .setStyle(ButtonStyle.Primary);
 
-        // Post panel to channel and confirm to administrator
+        const reverifyRoleBtn = new ButtonBuilder()
+            .setCustomId('btn_ucp_reverify_role')
+            .setLabel('ReVerify Role')
+            .setEmoji('🛡️')
+            .setStyle(ButtonStyle.Secondary);
+
+        const resetPassBtn = new ButtonBuilder()
+            .setCustomId('btn_ucp_reset_pass')
+            .setLabel('Reset Password')
+            .setEmoji('🔑')
+            .setStyle(ButtonStyle.Danger);
+
+        const row = new ActionRowBuilder().addComponents(
+            registerBtn,
+            resendCodeBtn,
+            reverifyRoleBtn,
+            resetPassBtn
+        );
+
         await interaction.channel.send({
             embeds: [embed],
             components: [row]
